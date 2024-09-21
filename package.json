@@ -1,0 +1,27 @@
+{
+  "name": "hackerrank",
+  "version": "1.0.0",
+  "description": "An attempt to extract hackerrank profile information",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VenkataRamanaRao5/hackerrank.git"
+  },
+  "author": "VenkataRamanaRao5",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/VenkataRamanaRao5/hackerrank/issues"
+  },
+  "homepage": "https://github.com/VenkataRamanaRao5/hackerrank#readme",
+  "dependencies": {
+    "express": "^4.21.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+    
+  }
+}
