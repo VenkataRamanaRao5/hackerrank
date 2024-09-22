@@ -18,10 +18,12 @@
   },
   "homepage": "https://github.com/VenkataRamanaRao5/hackerrank#readme",
   "dependencies": {
-    "express": "^4.21.0"
+    "cheerio": "^1.0.0",
+    "dom-to-svg": "^0.12.2",
+    "express": "^4.21.0",
+    "jsdom": "^25.0.1"
   },
   "devDependencies": {
     "nodemon": "^3.1.7"
-    
   }
 }
