@@ -27,7 +27,7 @@ app.get('/:username', (req, res) => {
             // Initialize SVG header
             let svgContent = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="500px" height="300px">`;
             svgContent += $('.hacker-badges .section-card-header :first').html()
-            svgContent += `<text x="30" y="15" font-size="16" font-weight="bold">Badges</text>`;
+            svgContent += `<text x="30" y="17" font-size="16" font-weight="bold">Badges</text>`;
 
             // Loop through the badges and extract SVGs
             badges.each((index, element) => {
