@@ -20,25 +20,26 @@ app.get('/:username', (req, res) => {
         proxyResponse.on("end", () => {
             const buffer = Buffer.concat(chunks)
             const data = buffer.toString('utf8')
-            console.log(data)
+            //console.log(data)
             const $ = cheerio.load(data)
-            const $badges = $('.section-card').html()
-            console.log($badges)
-            const createSVG = (content) => {
-                return `
-                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="500" height="500">
-                <foreignObject width="100%" height="100%">
-                    <body xmlns="http://www.w3.org/1999/xhtml">
-                    ${content}
-                    </body>
-                </foreignObject>
-                </svg>
-            `
-            }
+            const badges = $('.hacker-badges-v2 .hacker-badge');
 
-            const svgContent = createSVG($badges);
+            // Initialize SVG header
+            let svgContent = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="500px" height="300px">`;
+            svgContent += $('.hacker-badges .section-card-header :first').html()
+            svgContent += `<text x="30" y="15" font-size="16" font-weight="bold">Badges</text>`;
+
+            // Loop through the badges and extract SVGs
+            badges.each((index, element) => {
+                const badgeSvg = $(element).find('svg').html() // Extract the inner SVG content
+                svgContent += `<svg width="91" height="100" x="${(index % 5) * 95 + 10}" y="${Math.floor(index / 5) * 110 + 30}" style="text-anchor:middle">${badgeSvg}</svg>`; // Position badges vertically
+            });
+
+            svgContent += '</svg>';
+
+            // Set the response content type to text/xml for SVG
             res.set('Content-Type', 'image/svg+xml');
-            res.send(svgContent)
+            res.send(svgContent);
         })
     })
 
