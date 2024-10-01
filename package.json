@@ -2,10 +2,10 @@
   "name": "hackerrank",
   "version": "1.0.0",
   "description": "An attempt to extract hackerrank profile information",
-  "main": "index.js",
+  "main": "/api/index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "start": "node /api/index.js",
+    "dev": "nodemon /api/index.js"
   },
   "repository": {
     "type": "git",
@@ -19,9 +19,7 @@
   "homepage": "https://github.com/VenkataRamanaRao5/hackerrank#readme",
   "dependencies": {
     "cheerio": "^1.0.0",
-    "dom-to-svg": "^0.12.2",
-    "express": "^4.21.0",
-    "jsdom": "^25.0.1"
+    "express": "^4.21.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.7"
