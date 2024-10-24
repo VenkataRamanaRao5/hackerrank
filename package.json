@@ -2,10 +2,10 @@
   "name": "hackerrank",
   "version": "1.0.0",
   "description": "An attempt to extract hackerrank profile information",
-  "main": "/api/index.js",
+  "main": "api/index.js",
   "scripts": {
-    "start": "node /api/index.js",
-    "dev": "nodemon /api/index.js"
+    "start": "node api/index.js",
+    "dev": "nodemon api/index.js"
   },
   "repository": {
     "type": "git",
