@@ -2,6 +2,7 @@ const https = require("https")
 const express = require("express")
 const cheerio = require('cheerio')
 const fs = require('fs')
+const path = require('path')
 
 const app = express()
 
@@ -39,7 +40,7 @@ app.get('/:username', (req, res) => {
             badges.each((index, element) => {
                 const name = $(element)._findBySelector('image.badge-icon').attr().href.split('/').reverse()[0]
                 console.log(name)
-                const data = `<svg x="25.5" y="22" height="27" width="40">${fs.readFileSync('assets/' + name, 'utf-8')}</svg>`
+                const data = `<svg x="32" y="22" height="27" width="27">${fs.readFileSync(path.join(process.cwd(), 'assets', name), 'utf-8')}</svg>`
                 $(element)._findBySelector('image.badge-icon').replaceWith(data)
                 const badgeSvg = $(element).find('svg').html() // Extract the inner SVG content
                 svgContent += `<svg width="91" height="100" x="${(index % 5) * 95 + 10}" y="${Math.floor(index / 5) * 110 + 55}" style="text-anchor:middle">${badgeSvg}</svg>`; // Position badges vertically
