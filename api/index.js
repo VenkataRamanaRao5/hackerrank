@@ -1,10 +1,11 @@
 const https = require("https")
 const express = require("express")
 const cheerio = require('cheerio')
-const fs = require('fs')
-const path = require('path')
+const cors = require('cors')
 
 const app = express()
+
+app.use(cors())
 
 const icons = {
     "10-days-of-javascript-94ff22d1c9.svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 98.71567 71.37783\"><defs><style>.a{fill:#39424e;}</style></defs><title>10</title><path class=\"a\" d=\"M36.04,85.8009H20.9521V44.49741l.14842-6.7843.24217-7.42095q-3.7555,3.75552-5.222,4.92906L7.91861,41.81416.64216,32.72938l22.99711-18.3063h12.4008Z\" transform=\"translate(-0.64216 -14.42308)\"/><path class=\"a\" d=\"M99.35784,50.0683q0,18.08462-5.93,26.7719a20.55925,20.55925,0,0,1-18.24327,8.68725A20.34135,20.34135,0,0,1,57.168,76.55689q-6.0622-8.96868-6.06409-26.48859,0-18.26593,5.90547-26.93432A20.45387,20.45387,0,0,1,75.1846,14.47315a20.36356,20.36356,0,0,1,18.05452,9.065Q99.35781,32.60314,99.35784,50.0683ZM65.53555,48.22374q.031,1.84482-.00064,3.68908A53.62781,53.62781,0,0,0,67.79661,68.27a7.59492,7.59492,0,0,0,7.388,5.50319,7.68128,7.68128,0,0,0,7.36531-5.575,52.20713,52.20713,0,0,0,2.32864-16.29113q-.03-1.83909.002-3.67757a52.098,52.098,0,0,0-2.35326-16.40826,7.64768,7.64768,0,0,0-14.7079,0A53.58306,53.58306,0,0,0,65.53555,48.22374Z\" transform=\"translate(-0.64216 -14.42308)\"/></svg>",
@@ -47,7 +48,7 @@ app.get('/:username', (req, res) => {
             const width = 500, height = (numBadges < 5) ? 160 : 270
 
             // Initialize SVG header
-            let svgContent = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="${width}px" height="${height}px" style="border:solid black 1px; border-radius:2px; box-sizing: border-box;" href="https://hackerrank.com/profile/${username}">`;
+            let svgContent = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="${width}px" height="${height}px" style="outline:solid black 1.5px; outline-offset: -1.5px">`;
             svgContent += `<text x="10" y="23" font-size="24" font-weight="bold" font-family="Satoshi, Open Sans, sans-serif">${$('.profile-title-wrapper :first').text()}</text>`
             svgContent += `<text x="10" y="40" font-size="14" font-family="Satoshi, Open Sans, sans-serif">@${username}</text>`
             svgContent += `<g transform="translate(410,5)">${$('.hacker-badges .section-card-header :first').html()}`
