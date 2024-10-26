@@ -20,8 +20,47 @@ const icons = {
     "sql-89e76e7082.svg": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<!-- Generator: Adobe Illustrator 21.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->\r\n<svg version=\"1.1\" id=\"Layer_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\"\r\n\t viewBox=\"0 0 98.3 98.8\" style=\"enable-background:new 0 0 98.3 98.8;\" xml:space=\"preserve\">\r\n<style type=\"text/css\">\r\n\t.st0{fill:none;stroke:#39424E;stroke-width:8;stroke-miterlimit:10;}\r\n\t.st1{fill:none;stroke:#39424E;stroke-width:8;stroke-linecap:round;stroke-miterlimit:10;}\r\n</style>\r\n<title>Artboard 8</title>\r\n<g>\r\n\t<ellipse class=\"st0\" cx=\"48.5\" cy=\"22.8\" rx=\"43.3\" ry=\"15\"/>\r\n\t<path class=\"st1\" d=\"M6.3,44.7c0,0,35.9,21.1,86.5,0\"/>\r\n\t<path class=\"st1\" d=\"M6.3,60.7c0,0,35.9,21.1,86.5,0\"/>\r\n\t<path class=\"st1\" d=\"M6.3,78.9c0,0,35.9,21.1,86.5,0\"/>\r\n</g>\r\n</svg>\r\n"
 }    
 
+const html = `
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hackerrank profile getter</title>
+</head>
+
+<body>
+    <form id="input" name="input" method="post">
+        <label for="username">Hackerrank Username:</label>
+        <input type="text" id="username" name="username" />
+        <button type="submit">Get</button>
+    </form>
+    <img src="" alt="Image" id="outputBox" style="visibility:hidden">
+    <script defer>
+        const outputBox = document.getElementById("outputBox")
+        const ipForm = document.getElementById("input")
+        const base_url = "https://hackerrank-badges.vercel.app"
+        function getProfile(e){
+            e.preventDefault()
+            e.stopPropagation()
+            const uname = document.input.username.value
+            const url = \`\${ base_url }/\${uname}\`
+            outputBox.src = url
+            outputBox.style.visibility = 'visible'
+            return false
+        }
+
+        ipForm.addEventListener("submit", getProfile)
+    </script>
+
+</body>
+
+</html>
+`
+
 app.get('/', (req, res) => {
-    res.redirect('api/index.html')
+    res.send(html)
 })
 
 app.get('/:username', (req, res) => {
